@@ -8,20 +8,36 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.user {
+  position: relative;
+}
+
+.user .spinner {
+  animation: spinner 5s infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spinner {
+  100% {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.user img {
+  position: absolute;
+  z-index: 100;
+  top: 46.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.user img:hover ~ .spinner {
+  animation: spinner 2s infinite;
+  animation-timing-function: linear;
 }
